@@ -28,11 +28,6 @@ const parseDate = (inputDate: Date | string) => {
     return inputDate;
 }
 
-const timeSub = (big:string,small:string)=>{
-    const bigPair = big.split(`:`).map(Number);
-    const smallPair = small.split(`:`).map(Number);
-    return bigPair[0] < smallPair[0]? false: bigPair[1] > smallPair[1];
-}
 const timeStringToNumber = (timeString:string)=>{
     const timePair = timeString.split(`:`).map(Number);
     return timePair[0]*60 + timePair[1];
