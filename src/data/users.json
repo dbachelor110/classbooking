@@ -1,0 +1,34 @@
+{
+    "ID01":{
+        "name":"jack",
+        "teacher":true,
+        "defaultEnableTimes":{
+            "dateRange":"* * 2,3,5",
+            "timeRange":"9:00-17:00"
+        },
+        "enableTimes":[
+            {
+                "startDate":"2024-07-01",
+                "endDate":"2024-07-14",
+                "dateRange":"* * 1,3,5",
+                "timeRange":"9:00-22:00"
+            },
+            {
+                "startDate":"2024-07-15",
+                "endDate":"2024-07-20",
+                "dateRange":"* * 1-5",
+                "timeRange":"9:00-17:00"
+            },
+            {
+                "startDate":"2024-07-21",
+                "endDate":"2024-07-31",
+                "dateRange":"* * 1-2,4",
+                "timeRange":"9:00-11:00,14:00-20:00"
+            }
+        ]
+    },
+    "ID02":{
+        "name":"kevin",
+        "teacher":false
+    }
+}

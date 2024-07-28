@@ -1,0 +1,8 @@
+{
+    "ID01":{
+        "name":"class1",
+        "teacher":"jack",
+        "timeUnit": 60,
+        "minTimeUnit":1
+    }
+}
