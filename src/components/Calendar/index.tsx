@@ -2,14 +2,8 @@
 import React from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
+import { Event } from '../../types';
 import './Calendar.css';
-
-type Event = {
-  startTime: string;
-  endTime: string;
-  type?: `enable` | `booking`;
-  [key: string]: string | undefined;
-};
 
 type CalendarProps = {
   date: Date;
@@ -27,7 +21,8 @@ const getEventStyle = (startTime: string, endTime: string) => {
   return { top: `${top}%`, height: `${height}%` };
 };
 
-const CalendarComponent: React.FC<CalendarProps> = ({ date: _date, onChange, events }) => {
+const CalendarComponent: React.FC<CalendarProps> = ({ date, onChange, events }) => {
+  const CalendarInputDate = date;
   const tileContent = ({ date, view }: { date: Date; view: string }) => {
     if (view === 'month') {
       // 'en-CA' => format('YYYY-MM-DD')
@@ -35,7 +30,7 @@ const CalendarComponent: React.FC<CalendarProps> = ({ date: _date, onChange, eve
 
       const dayEvents = events[dateKey] || [];
       return (
-        <div className="day-cell">
+        <div className={`day-cell${CalendarInputDate.getMonth() != date.getMonth()? ` disable`:``}`}>
           {dayEvents.map((event, index) => {
             return <div
               key={index}
@@ -62,6 +57,8 @@ const CalendarComponent: React.FC<CalendarProps> = ({ date: _date, onChange, eve
       onActiveStartDateChange={({ activeStartDate }) => activeStartDate && onChange(activeStartDate)}
       // onChange={()=>{}}
       // value={date}
+      calendarType={`gregory`}
+      showFixedNumberOfWeeks={true}
       tileContent={tileContent}
     />
   );

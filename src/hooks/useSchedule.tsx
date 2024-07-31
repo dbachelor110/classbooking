@@ -1,40 +1,17 @@
-// src/hooks/useSchedule.ts
+// src/hooks/useSchedule.tsx
 import { useState, useEffect } from 'react';
 import { startOfMonth, endOfMonth, eachDayOfInterval } from 'date-fns';
 import { cron, timeStringToNumber } from '../lib/cron';
+import { Event, User, CronRange, EnableTimeRange, Schedule } from '../types';
 import dataM from '../lib/dataM';
-type DefaultEnableTimeRange = {
-    dateRange: string,
-    timeRange: string,
-};
-type EnableTimeRange = DefaultEnableTimeRange & {
-    startDate: string,
-    endDate: string,
-};
-type User = {
-    name: string,
-    teacher: boolean,
-    defaultEnableTimes?: {
-        dateRange: string,
-        timeRange: string
-    },
-    enableTimes?: EnableTimeRange[]
-}
-type Event = {
-    startTime: string;
-    endTime: string;
-    type?: `enable` | `booking`;
-    [key: string]: string | undefined;
-};
+
 type PreSchedule = {
     [date: string]: {
         enables: Event[],
         bookings: Event[]
     };
 };
-type Schedule = {
-    [date: string]: Event[];
-};
+
 type UserID = `ID01`;
 const TIMEFOMAT: [string, Intl.DateTimeFormatOptions] = ['en-CA',
     { hour: '2-digit', minute: '2-digit', hour12: false }];
@@ -50,7 +27,7 @@ const useSchedule = (month: Date, userID: UserID = `ID01`) => {
         const user: User = users[userID];
         // 預設取到依日期與時間排序的資料
         const enableTimeRanges: EnableTimeRange[] = user.enableTimes ? user.enableTimes : [];
-        const defaultEnableTime: DefaultEnableTimeRange = user.defaultEnableTimes ? user.defaultEnableTimes : {
+        const defaultEnableTime: CronRange = user.defaultEnableTimes ? user.defaultEnableTimes : {
             dateRange: "* * 8",
             timeRange: "9:00-17:00"
         };

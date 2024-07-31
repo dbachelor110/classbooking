@@ -1,0 +1,73 @@
+/* src/components/CalendarComponent.css */
+
+.day-cell {
+    position: relative;
+    height: 100%;
+}
+
+.react-calendar {
+    width: 100% !important;
+    height: 100%;
+    display: flex;
+    flex-direction:column;
+}
+
+.react-calendar__viewContainer {
+    flex-grow: 1;
+}
+
+.react-calendar__month-view {
+    height: 100%;
+}
+
+.react-calendar__month-view > div {
+    height: 100%;
+}
+
+.react-calendar__month-view > div > div {
+    display: flex;
+    flex-direction:column;
+    height: 100%;
+}
+
+.event-block {
+    position: absolute;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 123, 255, 0.7);
+    border: 1px solid #007bff;
+    border-radius: 4px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.event-block.enable {
+    background-color: #97cac58e;
+    border: 1px solid #97cac58e;
+}
+.event-block.booking {
+    background-color: #e68168;
+    border: 1px solid #e68168;
+}
+
+.react-calendar__tile--active {
+    background: none;
+}
+
+.react-calendar__tile--active:enabled:focus {
+    background: none;
+}
+.react-calendar__month-view__days {
+    height: 100%;
+}
+.react-calendar__month-view__days__day {
+    color: #757575;
+    height: 16.66%;
+}
+
+.react-calendar__month-view__days__day--weekend {
+    color: #d10000;
+}
